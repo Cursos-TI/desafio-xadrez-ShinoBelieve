@@ -1,38 +1,43 @@
 #include    <stdio.h>
-int main() {
-    int rainha = 0, bispo = 0, cavalo = 1;
-    //Mover a Torre 5 casas para a direita
-    for(int i = 0; i < 5; i++)
-    {
+
+void moverTorre(int casas) {
+    if (casas > 0){
         printf("Direita\n");
+        moverTorre(casas - 1);
     }
-    printf("\n"); // Pular linha
-
-    //Mover a Rainha 8 casas para a esquerda
-    while (rainha < 8)
-    {
+}
+void moverRainha(int casas) {
+    if (casas > 0){
         printf("Esquerda\n");
-        rainha++;
+        moverRainha(casas - 1);
     }
-    printf("\n"); // Pular linha
-
-    //Mover o Bispo 5 casas para diagonal direita
-    do
-    {
+}
+void moverBispo(int casas) {
+    if (casas > 0){
         printf("Cima, direita\n");
-        bispo++;
-    } while (bispo < 5);
-    printf("\n"); // Pular linha
-    //Mover o Cavalo 2 casas para cima e 1 para esquerda
-
-    while(cavalo--)
-    {   for(int i = 0; i < 2; i++)
-        {
-            printf("Cima\n"); // Cima 2 vezes
-        }
-        printf("Direita\n"); // Direita 1 vez
+        moverBispo(casas - 1);
     }
-    
+}
+void moverCavalo(int casas) {
+    if (casas > 0){
+        for(int i = 0; i < 2; i++){
+            printf("Cima\n");
+        }
+        printf("Direita\n");
+        moverCavalo(casas - 1);
+    }
+}
+int main(){
+    printf("Mover a Torre 5 casas para a direita\n");
+    moverTorre(5);
+    printf("\n"); // Pular linha
+    printf("Mover a Rainha 8 casas para a esquerda\n");
+    moverRainha(8);
+    printf("\n"); // Pular linha
+    printf("Mover o Bispo 5 casas para Cima, direita\n");
+    moverBispo(5);
+    printf("\n"); // Pular linha
+    printf("Mover o Cavalo 2 casas para Cima e 1 para Direita\n");
+    moverCavalo(1);
     return 0;
-    
 }
